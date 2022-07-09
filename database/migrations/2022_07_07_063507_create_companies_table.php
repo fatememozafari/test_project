@@ -21,8 +21,10 @@ return new class extends Migration
             $table->string('mobile')->nullable();
             $table->string('avatar_path')->nullable();
             $table->string('location');
-            $table->string('description')->nullable();
+            $table->longText('description')->nullable();
             $table->string('member_of_company')->nullable();
+            $table->string('rate')->nullable();
+            $table->string('analysis')->nullable();
             $table->date('date_of_establishment')->nullable();
             $table->timestamps();
         });
