@@ -16,22 +16,28 @@ return new class extends Migration
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('company_id');
+            $table->foreignId('source_id');
+            $table->foreignId('ad_links_id');
+            $table->foreignId('geolocation_id');
+            $table->foreignId('category_id');
             $table->string('job_title');
-            $table->string('location');
-            $table->enum('contract_type',['FULL_TIME','PART_TIME','REMOTE']);
+            $table->tinyInteger('contract_type',['1','2','3','4','5','6']);
             $table->string('avatar_path')->nullable();
             $table->string('number_of_people_needed')->nullable();
             $table->enum('gender',['MALE','FEMALE','BOTH']);
-            $table->enum('category',[]);
             $table->string('work_experience')->nullable();
             $table->string('salary')->nullable();
-            $table->enum('degree_of_education',[])->nullable();
+            $table->tinyInteger('degree_of_education',['1','2','3','4','5','6'])->nullable();
             $table->enum('military_service_status',[])->nullable();
-            $table->string('skills');
+            $table->foreignId('skill_id');
             $table->longText('job_description');
             $table->longText('company_introduction')->nullable();
             $table->integer('expiration_date');
             $table->boolean('urgent')->nullable();
+            $table->string('status');
+            $table->string('rate')->nullable();
+            $table->string('analysis')->nullable();
+
             $table->timestamps();
         });
     }
